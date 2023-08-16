@@ -265,6 +265,16 @@ public class TankDrive extends com.acmerobotics.roadrunner.drive.TankDrive {
         }
     }
 
+    public void setPowersByGamepad(double x, double y, ButterflyDrive.Function<Double, Double> func) {
+        // TODO: Flip these signs if the robot rotates the wrong way
+        for (DcMotorEx leftMotor : leftMotors) {
+            leftMotor.setPower(func.applyMultiplier(y + x));
+        }
+        for (DcMotorEx rightMotor : rightMotors) {
+            rightMotor.setPower(func.applyMultiplier(y - x));
+        }
+    }
+
     @Override
     public double getRawExternalHeading() {
         return imu.getAngularOrientation().firstAngle;

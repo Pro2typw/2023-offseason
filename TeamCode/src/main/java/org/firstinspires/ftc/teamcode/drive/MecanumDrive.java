@@ -263,12 +263,12 @@ public class MecanumDrive extends com.acmerobotics.roadrunner.drive.MecanumDrive
         rightFront.setPower(v3);
     }
 
-    public void setPowersByGamepad(double x, double y, double rx, double multiplier) {
+    public void setPowersByGamepad(double x, double y, double rx, ButterflyDrive.Function<Double, Double> func) {
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-        double lf = ((y + x + rx) / denominator) * multiplier;
-        double lb = ((y - x + rx) / denominator) * multiplier;
-        double rb = ((y + x - rx) / denominator) * multiplier;
-        double rf = ((y - x - rx) / denominator) * multiplier;
+        double lf = func.applyMultiplier((y + x + rx) / denominator);
+        double lb = func.applyMultiplier((y - x + rx) / denominator);
+        double rb = func.applyMultiplier((y + x - rx) / denominator);
+        double rf = func.applyMultiplier((y - x - rx) / denominator);
 
         leftFront.setPower(lf);
         leftRear.setPower(lb);
