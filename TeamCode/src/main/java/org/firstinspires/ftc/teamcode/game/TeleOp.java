@@ -25,8 +25,7 @@ public class TeleOp extends LinearOpMode {
         waitForStart();
 
         while(opModeIsActive()) {
-            if(gamepad1.a) butterflyDrive.setMode(ButterflyDriveMode.MECANUM);
-            if(gamepad1.b) butterflyDrive.setMode(ButterflyDriveMode.TANK);
+            if(gamepad1.a) butterflyDrive.swapMode();
 
             telemetry.addData("Drive Train Mode", butterflyDrive.getMode());
             telemetry.update();
@@ -34,7 +33,8 @@ public class TeleOp extends LinearOpMode {
             telemetryPacket.addLine("Butterfly Mode");
 
             telemetry.update();
-            butterflyDrive.setPower(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x, (x) -> 0.8 * Math.pow(x, 3));
+            butterflyDrive.setPower(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x, (x) -> 0.8 * Math.pow(x, 0.8));
+
         }
     }
 }

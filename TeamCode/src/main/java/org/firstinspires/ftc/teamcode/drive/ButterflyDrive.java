@@ -44,25 +44,21 @@ public class ButterflyDrive {
         this.mode = mode;
     }
 
+    public void swapMode() {
+        if(this.mode == ButterflyDriveMode.MECANUM) this.mode = ButterflyDriveMode.TANK;
+        else  this.mode = ButterflyDriveMode.TANK;
+        telemetry.addData("Drive Train Mode", mode.toString());
+
+    }
+
     // Telemetry purposes
     public ButterflyDriveMode getMode() {
         return mode;
     }
 
-//    public void setPower(double x1, double y1, double x2, ButterflyDrive.Function<Double, Double> func) {
-//        if(mode == ButterflyDriveMode.MECANUM) {
-//            // TODO: Configure multiplier parameters
-//            tankDrive.setPowersByGamepad(y1, x2, func);
-//
-//        }
-//        else {
-//            // TODO: Configure multiplier parameters
-//            mecanumDrive.setPowersByGamepad(x1, y1, x2, func);
-//        }
-//    }
 
     public void setPower(double x1, double y1, double x2, PowerMultiplier<Double, Double> func) {
-        if(mode == ButterflyDriveMode.MECANUM) {
+        if(mode == ButterflyDriveMode.TANK) {
             // TODO: Configure multiplier parameters
             tankDrive.setPowersByGamepad(y1, x2, func);
 
@@ -73,9 +69,5 @@ public class ButterflyDrive {
         }
     }
 
-    @FunctionalInterface
-    public interface Function<T, R> {
-        R applyMultiplier(T t);
-    }
 
 }
