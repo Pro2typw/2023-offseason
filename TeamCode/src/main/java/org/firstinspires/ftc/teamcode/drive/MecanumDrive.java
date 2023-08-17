@@ -38,6 +38,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.teamcode.drive.util.PowerMultiplier;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
@@ -263,7 +264,7 @@ public class MecanumDrive extends com.acmerobotics.roadrunner.drive.MecanumDrive
         rightFront.setPower(v3);
     }
 
-    public void setPowersByGamepad(double x, double y, double rx, ButterflyDrive.Function<Double, Double> func) {
+    public void setPowersByGamepad(double x, double y, double rx, PowerMultiplier<Double, Double> func) {
         double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
         double lf = func.applyMultiplier((y + x + rx) / denominator);
         double lb = func.applyMultiplier((y - x + rx) / denominator);

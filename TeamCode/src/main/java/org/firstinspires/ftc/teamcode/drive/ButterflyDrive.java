@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.drive.util.ButterflyDriveMode;
+import org.firstinspires.ftc.teamcode.drive.util.PowerMultiplier;
 
 public class ButterflyDrive {
     private MecanumDrive mecanumDrive;
@@ -48,7 +49,19 @@ public class ButterflyDrive {
         return mode;
     }
 
-    public void setPower(double x1, double y1, double x2, ButterflyDrive.Function<Double, Double> func) {
+//    public void setPower(double x1, double y1, double x2, ButterflyDrive.Function<Double, Double> func) {
+//        if(mode == ButterflyDriveMode.MECANUM) {
+//            // TODO: Configure multiplier parameters
+//            tankDrive.setPowersByGamepad(y1, x2, func);
+//
+//        }
+//        else {
+//            // TODO: Configure multiplier parameters
+//            mecanumDrive.setPowersByGamepad(x1, y1, x2, func);
+//        }
+//    }
+
+    public void setPower(double x1, double y1, double x2, PowerMultiplier<Double, Double> func) {
         if(mode == ButterflyDriveMode.MECANUM) {
             // TODO: Configure multiplier parameters
             tankDrive.setPowersByGamepad(y1, x2, func);

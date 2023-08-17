@@ -26,6 +26,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
+import org.firstinspires.ftc.teamcode.drive.util.PowerMultiplier;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
@@ -265,7 +266,7 @@ public class TankDrive extends com.acmerobotics.roadrunner.drive.TankDrive {
         }
     }
 
-    public void setPowersByGamepad(double x, double y, ButterflyDrive.Function<Double, Double> func) {
+    public void setPowersByGamepad(double x, double y, PowerMultiplier<Double, Double> func) {
         // TODO: Flip these signs if the robot rotates the wrong way
         for (DcMotorEx leftMotor : leftMotors) {
             leftMotor.setPower(func.applyMultiplier(y + x));

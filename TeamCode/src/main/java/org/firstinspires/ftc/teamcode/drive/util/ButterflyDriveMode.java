@@ -12,5 +12,5 @@ public enum ButterflyDriveMode {
         public String toString() {
             return "Tank";
         }
-    }
+    };
 }
