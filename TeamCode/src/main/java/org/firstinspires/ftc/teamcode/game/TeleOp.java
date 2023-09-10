@@ -17,7 +17,7 @@ public class TeleOp extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        butterflyDrive = new ButterflyDrive(hardwareMap, telemetry, ButterflyDriveMode.MECANUM);
+        butterflyDrive = new ButterflyDrive(hardwareMap, ButterflyDriveMode.MECANUM);
         telemetryPacket = new TelemetryPacket();
         telemetryPacket.put("Butterfly Mode", butterflyDrive.getMode());
         telemetryPacket.addLine("Butterfly Mode");
